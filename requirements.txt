@@ -1,0 +1,6 @@
+openai-agents[voice]
+openai-agents
+dotenv
+ipykernel
+jupyter
+sounddevice
