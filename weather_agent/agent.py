@@ -8,8 +8,10 @@ from agents import (
     set_default_openai_client,
     function_tool,
     set_tracing_disabled,
+    RunConfig
 )
 import os
+import asyncio
 from dotenv import load_dotenv
 import random
 
@@ -30,11 +32,16 @@ client = AsyncOpenAI(
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
 )
 
-model = OpenAIChatCompletionsModel(model="gemini-1.5-flash", openai_client=client)
+model = OpenAIChatCompletionsModel(model="gemini-2.0-flash", openai_client=client)
 
-set_tracing_disabled(disabled=True)
-set_default_openai_client(client)
+# set_tracing_disabled(disabled=True)
+# set_default_openai_client(client)
 
+config = RunConfig(
+    model=model,
+    model_provider=client,
+    tracing_disabled=True
+)
 
 # Tools
 
@@ -80,10 +87,10 @@ def get_weather(city_name: str) -> str:
        # Build the response string
        weather_report = f"""
        Weather in {weather_info.location_name}:
-       - Temperature: {weather_info.temperature}°C (feels like {weather_info.feels_like}°C)
+       - Temperature: {weather_info.temperature- 273.15}°C (feels like {weather_info.feels_like- 273.15}°C)
        - Conditions: {weather_info.description}
        - Humidity: {weather_info.humidity}%
-       - Wind speed: {weather_info.wind_speed} m/s
+       - Wind speed: {weather_info.wind_speed*3.6} km/h
        - Pressure: {weather_info.pressure} hPa
        """
        return weather_report
@@ -94,13 +101,13 @@ def get_weather(city_name: str) -> str:
 
 
 # Create a weather assistant
-weather_assistant = Agent(
+weather_agent = Agent(
    name="Weather Assistant",
    instructions="""You are a weather assistant that can provide current weather information.
   
    When asked about weather, use the get_weather tool to fetch accurate data.
-   If the user doesn't specify a country code and there might be ambiguity,
-   ask for clarification (e.g., Paris, France vs. Paris, Texas).
+   If the user doesn't specify a city name and there might be ambiguity,
+   ask for clarification (e.g., Paris, Karachi).
   
    Provide friendly commentary along with the weather data, such as clothing suggestions
    or activity recommendations based on the conditions.
@@ -108,14 +115,10 @@ weather_assistant = Agent(
    tools=[get_weather]
 )
 
-def main():
+async def weather_assistant(user_input:str):
   
-   simple_request = Runner.run_sync(weather_assistant, "What are your capabilities?")
-  
-   request_with_location = Runner.run_sync(weather_assistant, "What's the weather like in Tashkent right now?")
-  
-   print(simple_request.final_output)
-   print("-"*70)
-   print(request_with_location.final_output)
+   # Run the agent with the user's input
+    response = await Runner.run(starting_agent=weather_agent,input=user_input,run_config=config)
+    return response
 
-main()
+# asyncio.run(weather_assistant())

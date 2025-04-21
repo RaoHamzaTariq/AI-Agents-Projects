@@ -1,1 +1,8 @@
 .venv
+.env
+.files
+.chainlit
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

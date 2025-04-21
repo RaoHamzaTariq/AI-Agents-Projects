@@ -3,4 +3,5 @@ openai-agents
 dotenv
 ipykernel
 jupyter
-sounddevice
+pydantic
+chainlit
