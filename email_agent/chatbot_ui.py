@@ -1,29 +1,27 @@
-from agent import weather_assistant
-import asyncio
 import chainlit as cl
+from agent import run_email_agent
 
 @cl.on_chat_start
-async def chat_start():
-    cl.user_session.set("chat_history", [])
-    await cl.Message(content="Hello, I'm Weather Assistant. How can I help you today?").send()
+async def start_chat():
+    cl.user_session.set("chat_history",[])
+    await cl.Message(content="Welcome to the Email Agent! You can ask me to send an email.").send()
 
 @cl.on_message
-async def chat(message:cl.message):
+async def handle_message(message: cl.message):
     msg = cl.Message(content="Thinking...")
     await msg.send()
     history = cl.user_session.get("chat_history") or []
     history.append({"role": "user", "content": message.content})
 
     try:
-        result =asyncio.run(weather_assistant(history))
-        response_content = result.final_output
-        msg.content = response_content
+        result = await run_email_agent(history)
+        msg.content = result.final_output
         await msg.update()
 
         cl.user_session.set("chat_history", result.to_input_list())
 
         print(f"User: {message.content}")
-        print(f"Assistant: {response_content}")
+        print(f"Agent: {result.final_output}")
 
     except Exception as e:
         msg.content = f"Error: {str(e)}"

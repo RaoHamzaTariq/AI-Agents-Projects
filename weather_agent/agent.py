@@ -121,4 +121,4 @@ async def weather_assistant(user_input:str):
     response = await Runner.run(starting_agent=weather_agent,input=user_input,run_config=config)
     return response
 
-# asyncio.run(weather_assistant())
+# print(asyncio.run(weather_assistant("Tell me the weather in Karachi"))) # Karachi, Pakistan
