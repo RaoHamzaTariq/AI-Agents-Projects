@@ -5,3 +5,5 @@ ipykernel
 jupyter
 pydantic
 chainlit
+fastapi
+twilio
