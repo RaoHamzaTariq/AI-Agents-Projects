@@ -7,3 +7,4 @@ pydantic
 chainlit
 fastapi
 twilio
+mcp[cli]
