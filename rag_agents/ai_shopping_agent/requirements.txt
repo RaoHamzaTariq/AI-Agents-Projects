@@ -1,0 +1,8 @@
+openai-agents
+dotenv
+pydantic
+chainlit
+langchain
+langchain-community
+chromadb
+pypdf

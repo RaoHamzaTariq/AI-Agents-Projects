@@ -13,3 +13,7 @@ pyaudio
 pyttsx3
 streamlit
 firecrawl-py
+langchain
+langchain-community
+chromadb
+pypdf
