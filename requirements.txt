@@ -8,3 +8,8 @@ chainlit
 fastapi
 twilio
 mcp[cli]
+pillow
+pyaudio
+pyttsx3
+streamlit
+firecrawl-py

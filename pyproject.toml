@@ -1,22 +1,22 @@
 [project]
-name = "openai-agents-projects"
+name = "ai-agents-projects"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "chainlit>=2.5.5",
+    "chainlit>=2.6.2",
     "dotenv>=0.9.9",
-    "fastapi>=0.115.12",
-    "google-adk>=0.3.0",
+    "fastapi>=0.115.14",
+    "firecrawl-py>=2.16.3",
     "ipykernel>=6.29.5",
     "jupyter>=1.1.1",
-    "litellm>=1.67.4.post1",
-    "mcp[cli]>=1.6.0",
-    "openai>=1.75.0",
-    "openai-agents[voice]>=0.0.11",
-    "pydantic>=2.11.3",
-    "sounddevice>=0.5.1",
-    "twilio>=9.5.2",
-    "websockets>=15.0.1",
+    "mcp[cli]>=1.11.0",
+    "openai-agents[voice]>=0.2.0",
+    "pillow>=11.3.0",
+    "pyaudio>=0.2.14",
+    "pydantic>=2.11.7",
+    "pyttsx3>=2.99",
+    "streamlit>=1.46.1",
+    "twilio>=9.6.5",
 ]
