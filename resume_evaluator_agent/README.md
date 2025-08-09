@@ -70,7 +70,7 @@ resume-evaluator/
 ├── app.py                # Streamlit application
 ├── main.py               # Core business logic
 ├── schema.py             # Pydantic data models
-├── config.py             # Configuration (ignored in git)
+├── config.py             # Configuration for llm
 ├── requirements.txt      # Dependencies
 └── README.md            # This file
 
