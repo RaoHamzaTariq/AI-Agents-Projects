@@ -71,9 +71,6 @@ resume-evaluator/
 ├── main.py               # Core business logic
 ├── schema.py             # Pydantic data models
 ├── config.py             # Configuration (ignored in git)
-├── agents/               # Custom AI agents
-│   ├── __init__.py
-│   └── tracing.py
 ├── requirements.txt      # Dependencies
 └── README.md            # This file
 
