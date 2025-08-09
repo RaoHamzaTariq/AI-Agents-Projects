@@ -2,10 +2,6 @@
 
 An AI-powered application that analyzes resumes (PDF format), extracts key information, and provides an evaluation score with feedback.
 
-<video src="resume_evalutor_agent_demo.webm" autoplay controls></video>
-
-
-
 ## Features
 
 - **PDF Resume Parsing**: Extracts text from PDF resumes
