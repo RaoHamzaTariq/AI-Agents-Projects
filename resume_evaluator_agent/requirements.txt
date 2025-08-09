@@ -1,0 +1,8 @@
+fastapi
+openai-agents
+langchain
+langchain-community
+pydantic
+pandas
+PyPDF2
+streamlit

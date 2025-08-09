@@ -17,3 +17,5 @@ langchain
 langchain-community
 chromadb
 pypdf
+duckduckgo-search
+wikipedia
