@@ -1,0 +1,6 @@
+openai-agents
+astrapy
+fastapi
+langchain-community
+langchain
+pypdf
