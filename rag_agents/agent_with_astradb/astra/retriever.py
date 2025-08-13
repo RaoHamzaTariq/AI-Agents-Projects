@@ -1,7 +1,7 @@
 from rich import print
 from astra.connection import connect_to_database
 
-def retriever(user_query):
+async def retriever(user_query):
     database = connect_to_database()
     collection = database.get_collection("testing_collection")
     # print(type(collection))
