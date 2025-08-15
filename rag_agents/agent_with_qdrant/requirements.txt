@@ -1,0 +1,8 @@
+fastapi
+openai-agents
+langchain-community
+langchain
+dotenv
+qdrant-client
+langchain_google_genai
+numpy
